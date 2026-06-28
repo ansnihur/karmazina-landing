@@ -1,5 +1,14 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+
+*, *::before, *::after {
+  transition: font-size 0.2s ease,
+              padding 0.2s ease,
+              margin 0.2s ease,
+              width 0.2s ease,
+              height 0.2s ease,
+              gap 0.2s ease;
+}
+html { scroll-behavior: smooth; overflow-x: hidden; font-size: clamp(13px, 1.2vw, 16px); }
 
 @font-face {
   font-family: 'Mont';
@@ -9,10 +18,21 @@ html { scroll-behavior: smooth; }
   font-display: swap;
 }
 
+@font-face { font-family:'Mont'; src:url('/fonts/Mont-SemiBold.ttf') format('truetype'); font-weight:700; font-style:normal; font-display:swap; }
+
 @font-face {
   font-family: 'Nyght Serif';
   src: url('/fonts/NyghtSerif-Regular.ttf') format('truetype');
   font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Nyght Serif';
+  src: url('/fonts/NyghtSerif-Bold.ttf') format('truetype');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -36,6 +56,8 @@ body {
   background: #28201E;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 ::selection {
@@ -60,3 +82,9 @@ body {
 .lec:hover .lec-body, .lec:focus-within .lec-body { max-height:340px; opacity:1; margin-top:22px; }
 .lec-plus { transition:transform .45s ease; }
 .lec:hover .lec-plus { transform:rotate(135deg); }
+
+@media (max-width: 767px) {
+  html {
+    font-size: 13px;
+  }
+}
