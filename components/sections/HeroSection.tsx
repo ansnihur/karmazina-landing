@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import MoonBullet from '@/components/ui/MoonBullet';
 
 const FingerprintIcon = ({ stroke = '#FF9ED8' }: { stroke?: string }) => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -10,18 +11,6 @@ const FingerprintIcon = ({ stroke = '#FF9ED8' }: { stroke?: string }) => (
     <path d="M12 11a1.5 1.5 0 0 1 1.5 1.5c0 2-.4 3.6-1 4.7" />
     <path d="M9.4 16.6c.5-1.2.7-2.5.6-3.9" />
   </svg>
-);
-
-const MoonBullet = () => (
-  <div style={{
-    flexShrink: 0,
-    width: 'clamp(10px, 1.2vw, 15px)',
-    height: 'clamp(10px, 1.2vw, 15px)',
-    borderRadius: '50%',
-    background: 'transparent',
-    boxShadow: 'inset 5px -2px 0 0 #FF66C4',
-    marginTop: 3,
-  }} />
 );
 
 const HamburgerIcon = () => (
@@ -49,7 +38,7 @@ const navLinks = [
 const bulletPoints = [
   <>без води і пустої балаканини про «любов до себе, жіночність чи дихання маткою».</>,
   <>домашні завдання у вигляді конкретних інструментів, які працюють і закріплюють теорію.</>,
-  <><strong style={{ color: '#FF66C4', fontWeight: 800 }}>Авторська космічна медитація</strong> <br></br> «Пошли внутрішнього критика на сині лани».</>,
+  <><strong style={{ color: '#FF66C4', fontWeight: 800, textTransform: 'uppercase' }}>Авторська космічна медитація</strong> <br></br> «Пошли внутрішнього критика на сині лани».</>,
   <>секретний подарунок після проходження курсу.</>,
 ];
 
@@ -74,8 +63,6 @@ export default function HeroSection() {
           display: 'none',
           position: 'relative',
           zIndex: 2,
-          height: '100dvh',
-          maxHeight: '100dvh',
           overflow: 'hidden',
         }}
         className="hero-desktop"
@@ -84,39 +71,10 @@ export default function HeroSection() {
         <div style={{ position: 'absolute', inset: 0, display: 'flex' }}>
           {/* Dark left half */}
           <div style={{ flex: 1, background: '#28201E', position: 'relative' }}>
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              opacity: 0.45,
-              backgroundImage: `
-                radial-gradient(1.8px 1.8px at 8% 12%,#fff,transparent),
-                radial-gradient(1.2px 1.2px at 18% 35%,#fff,transparent),
-                radial-gradient(2px 2px at 5% 55%,#fff,transparent),
-                radial-gradient(1px 1px at 25% 20%,#fff,transparent),
-                radial-gradient(1.5px 1.5px at 35% 70%,#fff,transparent),
-                radial-gradient(0.8px 0.8px at 42% 15%,#fff,transparent),
-                radial-gradient(1.3px 1.3px at 15% 80%,#fff,transparent),
-                radial-gradient(1.6px 1.6px at 28% 90%,#fff,transparent),
-                radial-gradient(1px 1px at 48% 45%,#fff,transparent),
-                radial-gradient(1.4px 1.4px at 10% 95%,#fff,transparent),
-                radial-gradient(0.9px 0.9px at 38% 50%,#fff,transparent),
-                radial-gradient(1.7px 1.7px at 22% 62%,#fff,transparent),
-                radial-gradient(1.1px 1.1px at 44% 78%,#fff,transparent),
-                radial-gradient(2px 2px at 30% 8%,#fff,transparent),
-                radial-gradient(0.8px 0.8px at 46% 30%,#fff,transparent)
-              `,
-            }} />
           </div>
 
           {/* Light right half */}
           <div className="hero-right-bg" style={{ flex: 1, background: '#FCFAFB', position: 'relative', overflow: 'hidden' }}>
-            <img className="hero-blob-img" src="/images/blobs/blob-6.png" style={{ position: 'absolute', top: '5%', left: '5%', width: '25%', height: 'auto', opacity: 0.9, animation: 'blobA 13s ease-in-out infinite', pointerEvents: 'none' }} />
-            <img className="hero-blob-img" src="/images/blobs/blob-2.png" style={{ position: 'absolute', bottom: '5%', right: '5%', width: '30%', height: 'auto', opacity: 0.9, animation: 'blobB 17s ease-in-out infinite', pointerEvents: 'none' }} />
-            <img className="hero-blob-img" src="/images/blobs/blob-3.png" style={{ position: 'absolute', bottom: '5%', left: '10%', width: '25%', height: 'auto', opacity: 0.85, animation: 'blobC 15s ease-in-out infinite', pointerEvents: 'none' }} />
-            <img className="hero-blob-img" src="/images/blobs/blob-4.png" style={{ position: 'absolute', top: '5%', right: '5%', width: '10%', height: 'auto', opacity: 0.8, animation: 'blobB 19s ease-in-out infinite reverse', pointerEvents: 'none' }} />
-            <img className="hero-blob-img" src="/images/blobs/blob-5.png" style={{ position: 'absolute', top: '45%', left: '2%', width: '9%', height: 'auto', opacity: 0.75, animation: 'blobA 21s ease-in-out infinite reverse', pointerEvents: 'none' }} />
-            <img className="hero-blob-img" src="/images/blobs/blob-1.png" style={{ position: 'absolute', top: '22%', right: '8%', width: '11%', height: 'auto', opacity: 0.8, animation: 'blobC 14s ease-in-out infinite', pointerEvents: 'none' }} />
-            <img className="hero-blob-img" src="/images/blobs/blob-7.png" style={{ position: 'absolute', bottom: '18%', left: '4%', width: '8%', height: 'auto', opacity: 0.75, animation: 'blobA 16s ease-in-out infinite', pointerEvents: 'none' }} />
           </div>
         </div>
 
@@ -132,7 +90,9 @@ export default function HeroSection() {
           }}>
             {/* Wordmark */}
             <div>
-              <img src="/images/wordmark.PNG" alt="cosmic coach" className="hero-logo" height={isTablet ? 28 : 38} />
+              <a href="/" style={{ textDecoration: 'none' }}>
+                <img src="/images/wordmark.PNG" alt="cosmic coach" className="hero-logo" height={isTablet ? 28 : 38} />
+              </a>
             </div>
 
             {/* Nav */}
@@ -156,7 +116,7 @@ export default function HeroSection() {
                 ))}
                 <a
                   href="#price"
-                  className="hero-nav-link"
+                  className="hero-nav-cta"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -203,24 +163,6 @@ export default function HeroSection() {
           opacity: menuOpen ? 1 : 0,
           transition: 'opacity 0.4s ease',
         }}>
-          {/* Stars */}
-          <div style={{
-            position: 'absolute', inset: 0, pointerEvents: 'none',
-            backgroundImage: `
-              radial-gradient(1.5px 1.5px at 10% 15%,#fff,transparent),
-              radial-gradient(1px 1px at 25% 40%,#fff,transparent),
-              radial-gradient(2px 2px at 80% 20%,#fff,transparent),
-              radial-gradient(1.2px 1.2px at 60% 70%,#fff,transparent),
-              radial-gradient(0.8px 0.8px at 40% 85%,#fff,transparent),
-              radial-gradient(1.5px 1.5px at 90% 60%,#fff,transparent),
-              radial-gradient(1px 1px at 15% 75%,#fff,transparent),
-              radial-gradient(1.8px 1.8px at 70% 45%,#fff,transparent),
-              radial-gradient(0.9px 0.9px at 50% 25%,#fff,transparent),
-              radial-gradient(1.3px 1.3px at 85% 85%,#fff,transparent)
-            `,
-            opacity: 0.4,
-          }} />
-
           {/* Moon decoration */}
           <div style={{
             position: 'absolute', top: '-80px', right: '-80px',
@@ -236,7 +178,7 @@ export default function HeroSection() {
           }} />
 
           {/* Close button — matches hamburger position: header padding 14px top / 20px right + button padding 4px */}
-          <button onClick={() => setMenuOpen(false)} style={{
+          <button className="hero-menu-close" onClick={() => setMenuOpen(false)} style={{
             position: 'absolute', top: 14, right: 20,
             background: 'none', border: 'none', cursor: 'pointer', padding: 4,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -253,7 +195,7 @@ export default function HeroSection() {
           {/* Nav links */}
           <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32 }}>
             {navLinks.map(({ href, label }) => (
-              <a key={href} href={href} onClick={() => setMenuOpen(false)} style={{
+              <a key={href} href={href} onClick={() => setMenuOpen(false)} className="hero-nav-link" style={{
                 color: '#FBEFF6',
                 fontSize: 16,
                 fontWeight: 400,
@@ -279,8 +221,7 @@ export default function HeroSection() {
             padding: '16px 36px',
             borderRadius: 100,
             textDecoration: 'none',
-            boxShadow: '0 0 30px rgba(255,102,196,0.3)',
-            animation: 'pulseGlow 2s ease-in-out infinite',
+            animation: 'pulseGlow 3s ease-in-out infinite',
           }}>
             <FingerprintIcon stroke="#FF9ED8" />
             Хочу цей курс
@@ -306,8 +247,9 @@ export default function HeroSection() {
               fontWeight: 600,
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
+              whiteSpace: 'nowrap',
             }}>
-              трансформаційний курс
+              транс<span style={{ fontFamily: 'var(--font-montserrat)' }}>ф</span>ормаційний курс
             </p>
 
             <h1 style={{
@@ -328,28 +270,29 @@ export default function HeroSection() {
               Любов до себе перестане бути красивими словами і стане твоїм реальним станом: у рішеннях, діях і виборах кожного дня.
             </p>
 
-            <a
-              href="#price"
-              className="hero-cta-btn"
-              style={{
-                alignSelf: 'flex-start',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 10,
-                padding: '14px 28px',
-                borderRadius: 50,
-                background: '#28201E',
-                border: '1.5px solid rgba(255,102,196,0.55)',
-                color: '#FBEFF6',
-                fontWeight: 400,
-                fontSize: 15,
-                textDecoration: 'none',
-                animation: 'vibrate 6s ease-in-out infinite, pulseGlow 3s ease-in-out infinite',
-              }}
-            >
-              <FingerprintIcon />
-              Хочу цей курс
-            </a>
+            <span className="cta-scale-wrap hero-cta-wrap" style={{ alignSelf: 'flex-start' }}>
+              <a
+                href="#price"
+                className="hero-cta-btn"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 10,
+                  padding: '14px 28px',
+                  borderRadius: 50,
+                  background: '#28201E',
+                  border: '1.5px solid rgba(255,102,196,0.55)',
+                  color: '#FBEFF6',
+                  fontWeight: 400,
+                  fontSize: 15,
+                  textDecoration: 'none',
+                  animation: 'vibrate 6s ease-in-out infinite, pulseGlow 3s ease-in-out infinite',
+                }}
+              >
+                <FingerprintIcon />
+                Хочу цей курс
+              </a>
+            </span>
           </div>
 
           {/* Center column */}
@@ -389,7 +332,7 @@ export default function HeroSection() {
                 }}
               />
               <img
-                src="/images/kateryna-moon-mobile.png"
+                src="/images/kateryna-moon.png"
                 alt="Катерина Кармазіна"
                 className="hero-moon-mobile"
                 style={{
@@ -398,7 +341,7 @@ export default function HeroSection() {
                   height: 'auto',
                   objectFit: 'contain',
                   position: 'relative',
-                  zIndex: 1,
+                  zIndex: 2,
                 }}
               />
             </>
@@ -407,55 +350,72 @@ export default function HeroSection() {
           {/* Right column */}
           <div className="hero-right-col" style={{ display: 'flex', alignItems: 'center', paddingLeft: 40, minWidth: 0 }}>
 
-            <svg
-              className="mobile-hero-wave"
-              style={{
-                position: 'absolute',
-                top: -80,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '100vw',
-                height: 80,
-                display: 'none',
-                pointerEvents: 'none',
-                zIndex: 0,
-              }}
-              viewBox="0 0 390 80"
-              preserveAspectRatio="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0 80 L0 0 Q195 60 390 0 L390 80 Z"
-                fill="#FCFAFB"
-              />
-            </svg>
+            <div style={{ position: 'relative', width: '100%', isolation: 'isolate', zIndex: 4 }}>
 
-            {/* Mobile blobs */}
-            <img className="mobile-blob-img" src="/images/blobs/blob-6.png" style={{ position: 'absolute', top: '15px', left: '-10px', width: '90px', height: 'auto', opacity: 0.85, animation: 'blobA 13s ease-in-out infinite', pointerEvents: 'none', display: 'none' }} />
-            <img className="mobile-blob-img" src="/images/blobs/blob-2.png" style={{ position: 'absolute', bottom: '15px', right: '-10px', width: '110px', height: 'auto', opacity: 0.85, animation: 'blobB 17s ease-in-out infinite', pointerEvents: 'none', display: 'none' }} />
-            <img className="mobile-blob-img" src="/images/blobs/blob-4.png" style={{ position: 'absolute', top: '35px', right: '14px', width: '50px', height: 'auto', opacity: 0.75, animation: 'blobC 15s ease-in-out infinite', pointerEvents: 'none', display: 'none' }} />
-            <img className="mobile-blob-img" src="/images/blobs/blob-7.png" style={{ position: 'absolute', top: '45%', left: '8px', width: '45px', height: 'auto', opacity: 0.7, animation: 'blobA 19s ease-in-out infinite reverse', pointerEvents: 'none', display: 'none' }} />
+              {/* blob-1: верхній лівий кут, ЗА карткою */}
+              <img src="/images/blobs/blob-1.png" className="hero-card-blob-1" style={{
+                opacity: 0.85, pointerEvents: 'none',
+                animation: 'blobA 13s ease-in-out infinite',
+              }} />
 
-            <div className="hero-card glass-card" style={{
-              background: 'rgba(255,255,255,0.7)',
-              backdropFilter: 'blur(14px)',
-              WebkitBackdropFilter: 'blur(14px)',
-              borderRadius: 26,
-              padding: 'clamp(14px, 2vw, 30px)',
-              overflow: 'hidden',
-              maxWidth: '100%',
-            }}>
-              <p className="hero-card-title" style={{ fontSize: 'clamp(11px, 1vw, 14px)', lineHeight: 1.4, marginBottom: 20 }}>
-                <strong style={{ fontWeight: 700, color: '#28201E' }}>Формат: науково обґрунтовані лекції в записі</strong>
-              </p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
-                {bulletPoints.map((text, i) => (
-                  <li key={i} className="hero-card-li" style={{ display: 'flex', gap: 13, alignItems: 'flex-start', color: '#28201E', fontSize: 'clamp(11px, 1vw, 14px)', lineHeight: 1.55 }}>
-                    <MoonBullet />
-                    <span>{text}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* blob-2: середина лівого боку, переполовинений, ЗА карткою */}
+              <img src="/images/blobs/blob-2.png" className="hero-card-blob-2" style={{
+                opacity: 0.8, pointerEvents: 'none',
+                animation: 'blobB 17s ease-in-out infinite',
+              }} />
+
+              {/* blob-3: знизу зліва 25px від краю, ЗА карткою */}
+              <img src="/images/blobs/blob-3.png" className="hero-card-blob-3" style={{
+                opacity: 0.75, pointerEvents: 'none',
+                animation: 'blobC 21s ease-in-out infinite',
+              }} />
+
+              {/* blob-5: правий верхній кут, центр на куті, ЗА карткою */}
+              <img src="/images/blobs/blob-5.png" className="hero-card-blob-5" style={{
+                opacity: 0.85, pointerEvents: 'none',
+                animation: 'blobC 15s ease-in-out infinite',
+              }} />
+
+              {/* blob-4: правий нижній кут, центр на куті, НА картці */}
+              <img src="/images/blobs/blob-4.png" className="hero-card-blob-4" style={{
+                opacity: 0.9, pointerEvents: 'none',
+                animation: 'blobA 19s ease-in-out infinite reverse',
+              }} />
+
+              {/* Картка */}
+              <div className="hero-card glass-card" style={{
+                position: 'relative',
+                borderRadius: 26,
+                padding: 'clamp(14px, 2vw, 30px)',
+                maxWidth: '100%',
+                boxShadow: '0 8px 28px rgba(255,102,196,0.52)',
+                overflow: 'visible',
+                zIndex: 1,
+              }}>
+                {/* background layer */}
+                <div style={{
+                  position: 'absolute', inset: 0, borderRadius: 26,
+                  background: 'rgba(220,215,225,0.4)',
+                  backdropFilter: 'blur(5px)',
+                  WebkitBackdropFilter: 'blur(5px)',
+                  pointerEvents: 'none',
+                }} />
+
+                {/* content layer */}
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <p className="hero-card-title" style={{ fontSize: 'clamp(11px, 1vw, 14px)', lineHeight: 1.4, marginBottom: 20, textAlign: 'center' }}>
+                    <strong style={{ fontWeight: 700, color: '#28201E' }}><span style={{ fontFamily: 'var(--font-montserrat)' }}>Ф</span>ормат: науково обґрунтовані лекції в записі</strong>
+                  </p>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+                    {bulletPoints.map((text, i) => (
+                      <li key={i} className="hero-card-li" style={{ display: 'flex', gap: 13, alignItems: 'flex-start', color: '#28201E', fontSize: 'clamp(11px, 1vw, 14px)', lineHeight: 1.55 }}>
+                        <MoonBullet />
+                        <span>{text}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -467,13 +427,84 @@ export default function HeroSection() {
         .hero-moon-desktop { display: block; }
         .mobile-hero-wave { display: none; }
         .hero-nav { min-width: 0; }
+
+        .hero-hamburger, .hero-menu-close {
+          transition: transform 0.2s ease;
+        }
+        .hero-hamburger:hover, .hero-menu-close:hover {
+          transform: scale(1.15);
+        }
+
+        .hero-card-blob-1, .hero-card-blob-2, .hero-card-blob-3,
+        .hero-card-blob-4, .hero-card-blob-5 { position: absolute !important; }
+
+        /* blob-1: верхній лівий кут, ЗА карткою */
+        @media (max-width: 767px),
+        (max-width: 1024px) and (orientation: portrait) {
+          .hero-card-blob-1 { width: 195px !important; top: -110px !important; left: -90px !important; z-index: -1 !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+          .hero-card-blob-1 { width: 189px !important; top: -105px !important; left: -63px !important; z-index: -1 !important; }
+        }
         @media (min-width: 1025px) {
-          .hero-desktop { display: block !important; }
+          .hero-card-blob-1 { width: 270px !important; top: -150px !important; left: -90px !important; z-index: -1 !important; }
+        }
+
+        /* blob-2: середина лівого боку, переполовинений, ЗА карткою */
+        @media (max-width: 767px),
+        (max-width: 1024px) and (orientation: portrait) {
+          .hero-card-blob-2 { width: 150px !important; top: 50% !important; left: 0 !important; transform: translateY(-50%) translateX(-50%) !important; z-index: -1 !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+          .hero-card-blob-2 { width: 168px !important; top: 50% !important; left: 0 !important; transform: translateY(-50%) translateX(-50%) !important; z-index: -1 !important; }
+        }
+        @media (min-width: 1025px) {
+          .hero-card-blob-2 { width: 240px !important; top: 50% !important; left: 0 !important; transform: translateY(-50%) translateX(-50%) !important; z-index: -1 !important; }
+        }
+
+        /* blob-3: знизу зліва 25px від краю, ЗА карткою */
+        @media (max-width: 767px),
+        (max-width: 1024px) and (orientation: portrait) {
+          .hero-card-blob-3 { width: 240px !important; bottom: -135px !important; left: -25px !important; z-index: -1 !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+          .hero-card-blob-3 { width: 200px !important; bottom: -110px !important; left: -39px !important; z-index: -1 !important; }
+        }
+        @media (min-width: 1025px) {
+          .hero-card-blob-3 { width: 285px !important; bottom: -157px !important; left: -55px !important; z-index: -1 !important; }
+        }
+
+        /* blob-4: правий нижній кут, центр на куті, НА картці */
+        @media (max-width: 767px),
+        (max-width: 1024px) and (orientation: portrait) {
+          .hero-card-blob-4 { width: 240px !important; bottom: -106px !important; right: -89px !important; z-index: 2 !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+          .hero-card-blob-4 { width: 315px !important; bottom: -158px !important; right: -137px !important; z-index: 2 !important; }
+        }
+        @media (min-width: 1025px) {
+          .hero-card-blob-4 { width: 450px !important; bottom: -225px !important; right: -195px !important; z-index: 2 !important; }
+        }
+
+        /* blob-5: правий верхній кут, центр на куті, ЗА карткою */
+        @media (max-width: 767px),
+        (max-width: 1024px) and (orientation: portrait) {
+          .hero-card-blob-5 { width: 165px !important; top: -96px !important; right: -55px !important; z-index: -1 !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+          .hero-card-blob-5 { width: 189px !important; top: -95px !important; right: -74px !important; z-index: -1 !important; }
+        }
+        @media (min-width: 1025px) {
+          .hero-card-blob-5 { width: 270px !important; top: -135px !important; right: -105px !important; z-index: -1 !important; }
+        }
+
+        @media (min-width: 1025px) {
+          .hero-desktop { display: block !important; height: 100dvh !important; max-height: 100dvh !important; overflow: hidden !important; }
           .hero-nav-links { display: flex !important; }
           .hero-hamburger { display: none !important; }
         }
         @media (max-width: 1024px) and (orientation: landscape) {
-          .hero-nav-link { font-size: 12px !important; }
+          .hero-nav-link, .hero-nav-cta { font-size: 12px !important; }
           .hero-header-grid { padding: 14px 20px !important; }
         }
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
@@ -481,10 +512,12 @@ export default function HeroSection() {
           .hero-nav-links { display: none !important; }
           .hero-hamburger { display: flex !important; }
           .hero-right-bg { overflow: hidden !important; }
+          .hero-left-col { min-width: 260px !important; }
         }
         @media (max-width: 767px),
         (max-width: 1024px) and (orientation: portrait) {
-          .hero-desktop { display: block !important; }
+          .hero-desktop { display: block !important; height: auto !important; max-height: none !important; overflow: visible !important; }
+          .hero-grid { overflow: visible !important; }
           .hero-right-bg { display: none !important; }
           .hero-moon-desktop { display: none !important; }
           .hero-nav-links { display: none !important; }
@@ -539,6 +572,9 @@ export default function HeroSection() {
             font-size: 10px !important;
             margin-bottom: 8px !important;
           }
+          .hero-cta-wrap {
+            align-self: center !important;
+          }
 
           .hero-cta-btn {
             align-self: center !important;
@@ -565,7 +601,6 @@ export default function HeroSection() {
             object-fit: contain !important;
             min-width: 420px !important;
             min-height: 420px !important;
-
             max-width: 520px !important;
             max-height: 520px !important;
           }
@@ -578,20 +613,11 @@ export default function HeroSection() {
             margin-right: -20px !important;
             background: #FCFAFB !important;
             border-radius: 0 !important;
-            padding: 0 24px 40px !important;
+            padding: 204px 24px 64px !important;
             position: relative !important;
-            z-index: 3 !important;
             border: none !important;
             box-shadow: none !important;
             overflow: visible !important;
-          }
-          .hero-right-col .glass-card {
-            background: rgba(255,255,255,0.7) !important;
-            backdrop-filter: blur(14px) !important;
-            -webkit-backdrop-filter: blur(14px) !important;
-            border-radius: 20px !important;
-            padding: 15px !important;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.06) !important;
           }
           .hero-card-title {
             font-size: 15px !important;
@@ -607,10 +633,6 @@ export default function HeroSection() {
             display: block !important;
             width: 100% !important;
             height: 100px !important;
-          }
-          .mobile-blob-img {
-            display: block !important;
-            z-index: 0 !important;
           }
           .hero-right-col .glass-card {
             position: relative !important;
