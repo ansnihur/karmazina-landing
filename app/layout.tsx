@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
+
+const montserrat = Montserrat({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-montserrat",
+});
 
 export const metadata: Metadata = {
   title: "Любити себе — база | Катерина Кармазіна",
@@ -12,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uk">
-      <body>{children}</body>
+    <html lang="uk" className={montserrat.variable}>
+      <body suppressHydrationWarning={true}>{children}</body>
     </html>
   );
 }
