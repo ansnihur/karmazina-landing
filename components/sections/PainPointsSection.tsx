@@ -1,29 +1,20 @@
 'use client';
 
 import { useEffect } from 'react';
+import MoonBullet from '@/components/ui/MoonBullet';
+import SectionContainer from '@/components/ui/SectionContainer';
 
 const painPoints = [
-  'Ти залежиш від <strong style="color:#fff">чужої думки</strong>.',
-  'Ти постійно <strong style="color:#fff">сумніваєшся в собі</strong>.',
+  'Ти <strong style="color:#fff">залежиш</strong> від чужої думки.',
+  'Ти постійно <strong style="color:#fff">сумніваєшся</strong> в собі.',
+  'Ти не вмієш <strong style="color:#fff">казати «ні»</strong>, бо боїшся образити інших.',
+  'Ти постійно <strong style="color:#fff">критикуєш себе</strong> і легко <strong style="color:#fff">знецінюєш</strong>.',
   'Ти часто <strong style="color:#fff">підлаштовуєшся</strong> під інших.',
   'Ти багато віддаєш іншим і <strong style="color:#fff">вигораєш</strong>.',
-  'Ти постійно <strong style="color:#fff">критикуєш себе</strong> і легко знецінюєш.',
-  'Ти не вмієш казати <strong style="color:#fff">«ні»</strong>, бо боїшся образити інших.',
-  'Внутрішній критик <strong style="color:#fff">голосніше</strong> за твій власний голос.',
+  '<strong style="color:#fff">Внутрішній критик</strong> голосніший за твій власний голос.',
   'Ти не вмієш приймати компліменти й живеш у режимі <strong style="color:#fff">«я недостатня»</strong>.',
-  'Ти розумієш, що <strong style="color:#fff">«себе треба любити»</strong>, але не знаєш як це робити на практиці.',
+  'Ти розумієш, що «себе треба любити», але <strong style="color:#fff">не знаєш</strong> як це робити на практиці.',
 ];
-
-const MoonBullet = () => (
-  <div className="moon-bullet" style={{
-    flexShrink: 0,
-    width: 18,
-    height: 18,
-    borderRadius: '50%',
-    boxShadow: 'inset 7px -3px 0 0 #FF66C4',
-    marginBottom: 8,
-  }} />
-);
 
 const FingerprintIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF9ED8" strokeWidth="1.6" strokeLinecap="round">
@@ -50,7 +41,7 @@ export default function PainPointsSection() {
 
   return (
     <section className="pain-section" style={{ position: 'relative', zIndex: 2, background: '#28201E', marginTop: 0 }}>
-      <div className="pain-inner" style={{ maxWidth: 1180, margin: '0 auto', padding: 'clamp(64px, 8vw, 100px) clamp(20px, 4vw, 48px)' }}>
+      <SectionContainer className="pain-inner">
 
         {/* Заголовок */}
         <div style={{ textAlign: 'center', marginBottom: 'clamp(36px, 5vw, 54px)' }}>
@@ -79,7 +70,7 @@ export default function PainPointsSection() {
           gap: 'clamp(10px, 1.5vw, 16px)',
         }}>
           {painPoints.map((text, i) => (
-            <div key={i} className="pain-card" style={{
+            <div key={i} className={`pain-card${i === 6 ? ' pain-card-hide-mobile' : ''}`} style={{
               background: 'rgba(255,255,255,0.06)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
@@ -88,7 +79,7 @@ export default function PainPointsSection() {
               padding: 'clamp(16px, 2vw, 22px)',
             }}>
               <MoonBullet />
-              <p style={{ fontSize: 'clamp(13px, 1.2vw, 15px)', lineHeight: 1.5, color: 'rgba(247,233,241,0.92)' }}
+              <p style={{ fontSize: 'clamp(13px, 1.2vw, 15px)', lineHeight: 1.5, color: 'rgba(247,233,241,0.92)', marginTop: 6 }}
                 dangerouslySetInnerHTML={{ __html: text }} />
             </div>
           ))}
@@ -97,9 +88,9 @@ export default function PainPointsSection() {
         {/* Цитата з місяцем */}
         <div className="pain-quote-wrap" style={{
           position: 'relative',
-          maxWidth: 1000,
-          margin: 'clamp(40px, 6vw, 80px) auto 0',
-          minHeight: 'clamp(200px, 40vw, 520px)',
+          width: '100%',
+          marginTop: 'clamp(40px, 6vw, 80px)',
+          minHeight: 'clamp(280px, 44vw, 580px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -109,6 +100,7 @@ export default function PainPointsSection() {
             id="painMoon"
             src="/images/moon.png"
             alt=""
+            loading="lazy"
             style={{
               position: 'absolute',
               top: '50%',
@@ -134,34 +126,35 @@ export default function PainPointsSection() {
             padding: '0 16px',
           }}>
             {/* Ліва цитата */}
-            <div style={{ position: 'relative', flex: '1 1 460px', maxWidth: 640, padding: '16px 10px' }}>
+            <div style={{ position: 'relative', width: '50%', padding: '16px 10px' }}>
               <div style={{
                 position: 'absolute', inset: '-26px -30px',
                 background: 'radial-gradient(ellipse at 45% 50%,rgba(20,12,18,.88),rgba(20,12,18,.4) 62%,rgba(20,12,18,0) 82%)',
                 filter: 'blur(10px)',
               }} />
-              <span style={{ position: 'relative', zIndex: 1, fontFamily: 'Georgia,serif', fontSize: 60, lineHeight: 0, color: '#FF66C4' }}>"</span>
-              <p style={{ position: 'relative', zIndex: 1, marginTop: 10, fontSize: 'clamp(15px, 1.5vw, 19px)', lineHeight: 1.7, color: '#fff', textShadow: '0 2px 12px rgba(0,0,0,.7)' }}>
-                <span style={{ fontFamily: 'var(--font-nyght)', fontWeight: 400, fontSize: 'clamp(22px, 2.5vw, 32px)', lineHeight: 1.1, display: 'inline' }}>«Любити себе — <em style={{ color: '#FF66C4', fontStyle: 'italic' }}>база</em>»</span>{' '}— справді база для кожної жінки, яка втомилася бути для всіх, окрім себе: мовчати, погоджуватись на менше, терпіти, пояснювати, сумніватися, критикувати себе.
+              <span style={{ position: 'absolute', top: 22, left: 10, zIndex: 1, fontFamily: 'Georgia,serif', fontSize: 60, lineHeight: 0, color: '#FF66C4' }}>“</span>
+              <p style={{ position: 'relative', zIndex: 1, marginTop: 10, fontSize: 'clamp(15px, 1.5vw, 19px)', lineHeight: 1.7, color: '#fff', textShadow: '0 2px 12px rgba(0,0,0,.7)', textAlign: 'center' }}>
+                <span style={{ fontFamily: 'var(--font-nyght)', fontWeight: 400, fontSize: 'clamp(22px, 2.5vw, 32px)', lineHeight: 1.1, display: 'inline' }}>Любити себе — <em style={{ color: '#FF66C4', fontStyle: 'italic' }}>база</em></span>{' '} <br></br> справді база для кожної жінки, яка втомилася бути для всіх, окрім себе: мовчати, погоджуватись на менше, терпіти, пояснювати, сумніватися, критикувати себе.
               </p>
             </div>
 
             {/* Права картка */}
             <div style={{
               position: 'relative',
-              flex: '0 1 300px',
-              background: 'rgba(20,12,18,0.45)',
+              flex: '0 0 auto',
+              width: 'calc((min(1180px, 100vw) - 2 * clamp(20px, 4vw, 48px) - 2 * clamp(10px, 1.5vw, 16px)) / 3)',
+              background: 'rgba(255,255,255,0.08)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255,255,255,0.22)',
+              border: '1px solid rgba(255,255,255,0.15)',
               borderRadius: 24,
               padding: 'clamp(20px, 2.5vw, 30px) clamp(18px, 2vw, 28px) clamp(30px, 4vw, 42px)',
             }}>
-              <p style={{ fontSize: 'clamp(14px, 1.3vw, 17px)', lineHeight: 1.65, color: '#fff', fontWeight: 400 }}>
+              <p style={{ fontSize: 'clamp(14px, 1.3vw, 17px)', lineHeight: 1.65, color: '#fff', fontWeight: 700, textAlign: 'center' }}>
                 Цей курс для жінки, яка прагне нарешті відчути себе{' '}
                 <strong style={{ color: '#FF66C4' }}>цінною і впевненою</strong><span style={{ color: '#FF66C4' }}>.</span>
               </p>
-              <span style={{ position: 'absolute', bottom: -22, right: 18, fontFamily: 'Georgia,serif', fontSize: 64, lineHeight: 1, color: '#FF66C4' }}>"</span>
+              <span className="pain-quote-close" style={{ position: 'absolute', bottom: -22, right: 18, fontFamily: 'Georgia,serif', fontSize: 64, lineHeight: 1, color: '#FF66C4' }}>”</span>
             </div>
           </div>
         </div>
@@ -186,9 +179,17 @@ export default function PainPointsSection() {
             Забрати свою базу
           </a>
         </div>
-      </div>
+      </SectionContainer>
 
       <style>{`
+        @media (min-width: 768px) and (max-width: 1024px) {
+          .pain-card-hide-mobile {
+            display: none !important;
+          }
+          .pain-quote-close {
+            bottom: -32px !important;
+          }
+        }
         @media (max-width: 767px),
         (max-width: 1024px) and (orientation: portrait) {
           .pain-section {
@@ -196,7 +197,6 @@ export default function PainPointsSection() {
           }
           .pain-inner {
             padding-top: 0 !important;
-            padding-bottom: 40px !important;
           }
           .pain-grid {
             grid-template-columns: 1fr 1fr !important;
@@ -214,10 +214,9 @@ export default function PainPointsSection() {
           .pain-card p {
             font-size: 12px !important;
             line-height: 1.4 !important;
-            margin-top: 6px !important;
           }
           .pain-quote-wrap {
-            min-height: 260px !important;
+            min-height: 320px !important;
             margin-top: 32px !important;
           }
           #painMoon {
@@ -225,7 +224,7 @@ export default function PainPointsSection() {
           }
           .pain-quote-inner {
             flex-direction: column !important;
-            align-items: flex-start !important;
+            align-items: center !important;
             gap: 20px !important;
             padding: 0 8px !important;
           }
@@ -233,6 +232,16 @@ export default function PainPointsSection() {
             flex: none !important;
             width: 100% !important;
             max-width: 100% !important;
+          }
+          .pain-quote-inner > div:first-child {
+            text-align: center !important;
+          }
+        }
+        @media (max-width: 767px) {
+          .pain-grid > .pain-card:last-child {
+            grid-column: 1 / -1 !important;
+            justify-self: stretch !important;
+            width: 100% !important;
           }
         }
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
@@ -244,9 +253,6 @@ export default function PainPointsSection() {
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
           .pain-grid {
             grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .pain-quote-wrap {
-            min-height: 300px !important;
           }
           .pain-quote-inner {
             justify-content: space-between !important;
