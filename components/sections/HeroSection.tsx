@@ -477,7 +477,7 @@ export default function HeroSection() {
         /* blob-4: правий нижній кут, центр на куті, НА картці */
         @media (max-width: 767px),
         (max-width: 1024px) and (orientation: portrait) {
-          .hero-card-blob-4 { width: 240px !important; bottom: -106px !important; right: -89px !important; z-index: 2 !important; }
+          .hero-card-blob-4 { width: 240px !important; bottom: -126px !important; right: -89px !important; z-index: 2 !important; }
         }
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
           .hero-card-blob-4 { width: 315px !important; bottom: -158px !important; right: -137px !important; z-index: 2 !important; }
