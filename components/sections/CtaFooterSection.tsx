@@ -176,7 +176,7 @@ export default function CtaFooterSection() {
             flexWrap: 'wrap',
           }}>
             <a href="/" className="footer-logo" style={{ textDecoration: 'none' }}>
-              <img src="/images/wordmark.PNG" alt="cosmic coach"
+              <img src="/images/wordmark.png" alt="cosmic coach"
                 style={{ height: 26, width: 'auto', objectFit: 'contain', opacity: 0.9 }} />
             </a>
             <span style={{ fontSize: 14, color: 'rgba(247,233,241,0.5)' }}>· Катерина · {year}</span>

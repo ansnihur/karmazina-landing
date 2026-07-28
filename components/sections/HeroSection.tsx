@@ -91,7 +91,7 @@ export default function HeroSection() {
             {/* Wordmark */}
             <div>
               <a href="/" style={{ textDecoration: 'none' }}>
-                <img src="/images/wordmark.PNG" alt="cosmic coach" className="hero-logo" height={isTablet ? 28 : 38} />
+                <img src="/images/wordmark.png" alt="cosmic coach" className="hero-logo" height={isTablet ? 28 : 38} />
               </a>
             </div>
 
@@ -190,7 +190,7 @@ export default function HeroSection() {
           </button>
 
           {/* Logo */}
-          <img src="/images/wordmark.PNG" alt="cosmic coach" style={{ height: 32, marginBottom: 48, opacity: 0.9 }} />
+          <img src="/images/wordmark.png" alt="cosmic coach" style={{ height: 32, marginBottom: 48, opacity: 0.9 }} />
 
           {/* Nav links */}
           <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32 }}>
