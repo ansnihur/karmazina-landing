@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import MoonBullet from '@/components/ui/MoonBullet';
+import SectionContainer from '@/components/ui/SectionContainer';
 
 const lectures = [
   {
@@ -9,12 +11,12 @@ const lectures = [
     desc: 'Почнемо зі знайомства і закладемо основу для внутрішніх змін. Розберемося, чому любов до себе — це не вроджена якість, а навичка, яку можна поступово сформувати.',
     results: [
       'Ти зрозумієш, від чого насправді залежить самоцінність.',
-      'Ти сформуєш внутрішню опору (коли цінність не залежить від чужої думки і ти не втрачаєш себе через обставини) для подальших змін.',
+      'Ти сформуєш внутрішню опору (коли цінність не залежить від чужої думки і ти не втрачаєш себе через негативні обставини) для подальших змін.',
     ],
   },
   {
     num: '01',
-    title: 'Як формується ставлення до себе',
+    title: 'Як <span style="font-family:var(--font-montserrat)">ф</span>ормується ставлення до себе',
     desc: 'Дослідимо, як формується ставлення до себе та які внутрішні механізми можуть його послаблювати. Почнемо вибудовувати новий спосіб взаємодії із собою.',
     results: [
       'Ти помітиш патерни, які стримують твої зміни на краще.',
@@ -89,7 +91,7 @@ export default function ProgramSection() {
 
   return (
     <section id="program" style={{ position: 'relative', zIndex: 2, background: '#28201E' }}>
-      <div style={{ maxWidth: 1180, margin: '0 auto', padding: 'clamp(64px, 8vw, 100px) clamp(20px, 4vw, 48px)' }}>
+      <SectionContainer>
 
         {/* Заголовок */}
         <div style={{ textAlign: 'center', marginBottom: 'clamp(36px, 5vw, 58px)' }}>
@@ -145,7 +147,7 @@ export default function ProgramSection() {
                   fontWeight: 700,
                   fontSize: 'clamp(15px, 1.5vw, 20px)',
                   color: '#fff',
-                }}>{lec.title}</div>
+                }} dangerouslySetInnerHTML={{ __html: lec.title }} />
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -225,7 +227,7 @@ export default function ProgramSection() {
         </div>
 
         {/* Бонус рядок */}
-        <div style={{
+        <div className="bonus-row" style={{
           marginTop: 22,
           display: 'flex',
           alignItems: 'center',
@@ -248,7 +250,7 @@ export default function ProgramSection() {
             fontSize: 'clamp(13px, 1.2vw, 16px)',
             color: '#FBEFF6',
           }}>
-            Після проходження курсу — отримаєш{' '}
+            Після проходження курсу<br className="bonus-break" /> — отримаєш{' '}
             <strong style={{ color: '#FF66C4' }}>секретний подарунок</strong>
           </span>
         </div>
@@ -269,6 +271,7 @@ export default function ProgramSection() {
             className="meditation-moon"
             src="/images/moon.png"
             alt=""
+            loading="lazy"
             style={{
               flexShrink: 0,
               width: 'clamp(80px, 10vw, 140px)',
@@ -276,6 +279,8 @@ export default function ProgramSection() {
               objectFit: 'contain',
               borderRadius: '50%',
               opacity: 0.95,
+              filter: 'drop-shadow(0 0 20px rgba(255,102,196,0.5))',
+              animation: 'floatY 9s ease-in-out infinite',
             }}
           />
           <div>
@@ -304,11 +309,17 @@ export default function ProgramSection() {
             }}>«Пошли внутрішнього критика на сині лани» — от саме це ти і будеш робити з критиком. Після медитації відчуєш спокій замість тривоги і критики.</p>
           </div>
         </div>
-      </div>
+      </SectionContainer>
 
       <style>{`
+        .bonus-break {
+          display: none;
+        }
         @media (max-width: 767px),
         (max-width: 1024px) and (orientation: portrait) {
+          .bonus-break {
+            display: inline;
+          }
           .meditation-card {
             flex-direction: column !important;
             align-items: flex-start !important;
@@ -318,6 +329,10 @@ export default function ProgramSection() {
           .meditation-moon {
             width: 80px !important;
             height: 80px !important;
+          }
+          .bonus-row {
+            justify-content: flex-start !important;
+            text-align: left !important;
           }
         }
       `}</style>
