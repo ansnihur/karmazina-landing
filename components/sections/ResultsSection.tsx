@@ -1,14 +1,17 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+import MoonBullet from '@/components/ui/MoonBullet';
+
 const results = [
   'Ти перестанеш оцінювати себе через чужу думку.',
   'Ти почнеш діяти впевнено і <strong style="color:#28201E">в напрямку до себе</strong>.',
   'Ти навчишся спокійно відмовляти без переживань.',
   'Ти почнеш діяти зі стану цінності до себе.',
-  'Ти будеш знати свої межі і вміти тримати їх.',
+  'Ти будеш знати свої межі і вміти їх відстоювати.',
   'Ти навчишся обирати себе, а не підлаштовуватись під інших.',
   'Ти будеш чути свої справжні бажання і йти за ними.',
-  '<strong style="color:#28201E"><em>Ти відчуєш себе розкішною жінкою.</em></strong>',
+  '<strong style="color:#28201E">Ти відчуєш себе розкішною жінкою.</strong>',
 ];
 
 const FingerprintIcon = () => (
@@ -22,14 +25,35 @@ const FingerprintIcon = () => (
 );
 
 export default function ResultsSection() {
+  const chatRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const bubbles = chatRef.current?.querySelectorAll('.chat-bubble');
+    if (!bubbles) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = el.dataset.delay || '0';
+            setTimeout(() => {
+              el.style.opacity = '1';
+              el.style.transform = 'translateX(0)';
+            }, parseInt(delay));
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    bubbles.forEach((bubble) => observer.observe(bubble));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section style={{ position: 'relative', zIndex: 2, background: '#FCFAFB', overflow: 'hidden' }}>
-
-      {/* PNG блоби */}
-      <img src="/images/blobs/blob-1.png" style={{ position: 'absolute', top: 40, left: -20, width: 220, height: 'auto', opacity: 0.7, animation: 'blobB 19s ease-in-out infinite', pointerEvents: 'none', zIndex: 0 }} />
-      <img src="/images/blobs/blob-4.png" style={{ position: 'absolute', top: 120, left: 220, width: 130, height: 'auto', opacity: 0.6, animation: 'blobC 14s ease-in-out infinite', pointerEvents: 'none', zIndex: 0 }} />
-      <img src="/images/blobs/blob-2.png" style={{ position: 'absolute', bottom: 60, right: -20, width: 200, height: 'auto', opacity: 0.65, animation: 'blobA 17s ease-in-out infinite', pointerEvents: 'none', zIndex: 0 }} />
-      <img src="/images/blobs/blob-6.png" style={{ position: 'absolute', bottom: 160, left: -10, width: 180, height: 'auto', opacity: 0.6, animation: 'blobB 21s ease-in-out infinite', pointerEvents: 'none', zIndex: 0 }} />
 
       <div className="results-grid" style={{
         position: 'relative',
@@ -42,6 +66,25 @@ export default function ResultsSection() {
         gap: 'clamp(32px, 5vw, 64px)',
         alignItems: 'start',
       }}>
+
+        {/* PNG блоби */}
+        <div style={{
+          position: 'absolute',
+          top: -50,
+          left: -90,
+          animation: 'blobB 19s ease-in-out infinite',
+          pointerEvents: 'none',
+          zIndex: -1,
+        }}>
+          <img src="/images/blobs/blob-5.png" loading="lazy" style={{
+            width: 340,
+            height: 'auto',
+            opacity: 0.7,
+            transform: 'rotate(60deg)',
+            display: 'block',
+          }} />
+        </div>
+        <img src="/images/blobs/blob-1.png" loading="lazy" style={{ position: 'absolute', top: 120, left: 200, width: 160, height: 'auto', opacity: 0.6, animation: 'blobC 14s ease-in-out infinite', pointerEvents: 'none', zIndex: -1 }} />
 
         {/* Ліва колонка */}
         <div>
@@ -73,7 +116,7 @@ export default function ResultsSection() {
             <strong style={{ color: '#FF66C4' }}>Відчуй це…</strong>
           </p>
 
-          <div style={{ marginTop: 34 }}>
+          <div className="results-cta-wrap" style={{ position: 'relative', marginTop: 34 }}>
             <a href="#price" style={{
               textDecoration: 'none',
               display: 'inline-flex',
@@ -89,8 +132,19 @@ export default function ResultsSection() {
               animation: 'pulseGlow 3s ease-in-out infinite',
             }}>
               <FingerprintIcon />
-              Іду у напрямку до себе
+              Іду в напрямку до себе
             </a>
+            <img src="/images/blobs/blob-4.png" loading="lazy" style={{
+              position: 'absolute',
+              bottom: -120,
+              right: -90,
+              width: 250,
+              height: 'auto',
+              opacity: 0.7,
+              pointerEvents: 'none',
+              zIndex: -1,
+              animation: 'blobA 17s ease-in-out infinite',
+            }} />
           </div>
         </div>
 
@@ -109,13 +163,7 @@ export default function ResultsSection() {
               padding: 'clamp(12px, 1.5vw, 16px) clamp(16px, 2vw, 22px)',
               boxShadow: '0 10px 30px rgba(120,60,90,0.08)',
             }}>
-              <div className="result-bullet" style={{
-                flexShrink: 0,
-                width: 20,
-                height: 20,
-                borderRadius: '50%',
-                boxShadow: 'inset 6px -2px 0 0 #FF66C4',
-              }} />
+              <MoonBullet />
               <span
                 style={{ fontSize: 'clamp(13px, 1.2vw, 16px)', color: '#3a3338', lineHeight: 1.5 }}
                 dangerouslySetInnerHTML={{ __html: text }}
@@ -151,96 +199,223 @@ export default function ResultsSection() {
             font-size: 12px !important;
             line-height: 1.4 !important;
           }
+          .results-cta-wrap {
+            text-align: center !important;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .chat-bubble {
+            width: 78%;
+          }
+          .bubble-wrap-left,
+          .bubble-wrap-right {
+            width: 100% !important;
+            display: flex;
+          }
+          .bubble-wrap-left {
+            justify-content: flex-start;
+          }
+          .bubble-wrap-right {
+            justify-content: flex-end;
+          }
+          .bubble-blob3 {
+            left: -120px !important;
+          }
+          .bubble-blob1 {
+            bottom: -180px !important;
+            right: -140px !important;
+          }
+          .bubble-blob5-msg2 {
+            top: -120px !important;
+            right: -50px !important;
+          }
+          .bubble-blob5-msg1 {
+            right: calc(72.73vw - 192.73px) !important;
+          }
         }
       `}</style>
 
       <div style={{
         position: 'relative',
         zIndex: 1,
-        maxWidth: 900,
+        maxWidth: 1180,
         margin: '0 auto',
-        padding: '0 clamp(20px, 4vw, 48px) clamp(64px, 8vw, 110px)',
+        padding: '0 clamp(20px, 4vw, 48px)',
+        textAlign: 'center',
       }}>
-        {/* PNG блоби */}
-        <img src="/images/blobs/blob-3.png" style={{ position:'absolute', left:-14, bottom:150, width:190, height:'auto', opacity:0.7, animation:'blobB 17s ease-in-out infinite', pointerEvents:'none', zIndex:0 }} />
-        <img src="/images/blobs/blob-5.png" style={{ position:'absolute', right:-20, top:150, width:170, height:'auto', opacity:0.65, animation:'blobA 19s ease-in-out infinite', pointerEvents:'none', zIndex:0 }} />
-        <img src="/images/blobs/blob-7.png" style={{ position:'absolute', left:'46%', bottom:60, transform:'translateX(-50%)', width:240, height:'auto', opacity:0.6, animation:'blobC 21s ease-in-out infinite', pointerEvents:'none', zIndex:0 }} />
+        <h2 style={{
+          fontFamily: 'var(--font-nyght)',
+          fontWeight: 400,
+          fontSize: 'clamp(28px, 3.5vw, 40px)',
+          lineHeight: 1.15,
+          color: '#28201E',
+          marginBottom: 'clamp(32px, 5vw, 48px)',
+        }}>Цей курс точно для мене?…</h2>
+      </div>
 
-        {/* Темна цитата-картка */}
-        <div style={{
-          position: 'relative',
-          zIndex: 2,
-          maxWidth: 680,
-          margin: '0 auto',
-          background: 'linear-gradient(135deg, #6b2d4a 0%, #4a2038 35%, #2d1825 70%, #1a1018 100%)',
-          border: '1px solid rgba(255,102,196,0.45)',
-          borderRadius: 34,
-          padding: 'clamp(32px, 4vw, 58px) clamp(24px, 4vw, 50px)',
-          textAlign: 'center',
-          boxShadow: '0 26px 80px rgba(40,15,28,0.6), 0 0 80px rgba(255,102,196,0.25), inset 0 1px 0 rgba(255,255,255,0.08)',
-        }}>
-          <p style={{
-            fontFamily: 'var(--font-nyght)',
-            fontSize: 'clamp(18px, 2vw, 24px)',
-            lineHeight: 1.4,
-            color: '#fff',
-            fontStyle: 'italic',
-          }}>
-            <span style={{ fontFamily: 'Georgia,serif', fontSize: 'clamp(48px, 5vw, 64px)', lineHeight: 0, color: '#FF66C4', verticalAlign: '-0.3em', marginRight: 6 }}>"</span>
-            Цінувати себе — це не про мене. Я звикла себе відкладати. Цей курс точно для мене?
-            <span style={{ fontFamily: 'Georgia,serif', fontSize: 'clamp(48px, 5vw, 64px)', lineHeight: 0, color: '#FF66C4', verticalAlign: '-0.3em', marginLeft: 6 }}>"</span>
-          </p>
-          <p style={{
-            marginTop: 24,
-            marginBottom: 24,
-            fontSize: 'clamp(14px, 1.2vw, 16px)',
-            lineHeight: 1.7,
-            color: 'rgba(255,238,248,0.88)',
-            maxWidth: 620,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}>
-            <strong style={{ color: '#FF9ED8' }}>Так!</strong>{' '}
-            Навіть якщо все життя ти ставила себе на останнє місце — все можна змінити. Любити себе, цінувати та обирати — це навичка, яка формується через повторюваний досвід. Ми створимо цей «новий» досвід разом за допомогою потужних практичних інструментів.
-          </p>
+      <div ref={chatRef} style={{
+        position: 'relative',
+        zIndex: 1,
+        maxWidth: 1180,
+        margin: '0 auto',
+        padding: '0 clamp(20px, 4vw, 48px) clamp(64px, 8vw, 100px)',
+      }}>
+
+
+        {/* Рядок 1 */}
+        <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: 16 }}>
+          {/* Ліва бульбашка */}
+          <div className="bubble-wrap-left" style={{ position: 'relative', width: '48%' }}>
+            <div className="chat-bubble" data-delay="0" style={{
+              background: 'linear-gradient(135deg, #6b2d4a 0%, #3a2030 100%)',
+              border: '1px solid rgba(255,102,196,0.3)',
+              borderRadius: '18px 18px 18px 4px',
+              padding: 'clamp(12px, 1.5vw, 20px) clamp(14px, 2vw, 24px)',
+              color: '#fff',
+              fontSize: 'clamp(13px, 1.2vw, 16px)',
+              lineHeight: 1.6,
+              fontStyle: 'normal',
+              opacity: 0,
+              transform: 'translateX(-30px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+            }}>
+              Цінувати себе — це не про мене. Я звикла себе відкладати. Цей курс точно для мене?
+            </div>
+            <div className="bubble-blob5-msg1" style={{
+              position: 'absolute',
+              bottom: '-260px',
+              right: '-40px',
+              width: 360,
+              pointerEvents: 'none',
+              zIndex: 2,
+              animation: 'blobB 21s ease-in-out infinite',
+            }}>
+              <img src="/images/blobs/blob-5.png" loading="lazy" style={{
+                width: '100%',
+                height: 'auto',
+                opacity: 0.6,
+                transform: 'rotate(-65deg)',
+                display: 'block',
+              }} />
+            </div>
+          </div>
         </div>
 
-        {/* Біла картка що накладається */}
-        <div style={{
-          position: 'relative',
-          zIndex: 3,
-          margin: '-32px auto 0',
-          maxWidth: 860,
-          background: '#fff',
-          borderRadius: 22,
-          boxShadow: '0 18px 44px rgba(40,15,28,0.28)',
-          padding: 'clamp(18px, 2vw, 24px) clamp(20px, 3vw, 40px)',
-          textAlign: 'center',
-        }}>
-          <p style={{
-            fontSize: 'clamp(14px, 1.2vw, 16px)',
-            lineHeight: 1.6,
-            color: '#28201E',
-            fontWeight: 700,
-          }}>Забудь те, як ти жила до цього! Попереду — новий досвід і любов до себе у кожному виборі.</p>
+        {/* Права бульбашка відповідь */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16 }}>
+          <div className="bubble-wrap-right" style={{ position: 'relative', width: '48%', zIndex: 3 }}>
+            <div className="chat-bubble" data-delay="300" style={{
+              background: 'linear-gradient(135deg, #6b2d4a 0%, #3a2030 100%)',
+              border: '1px solid rgba(255,102,196,0.3)',
+              borderRadius: '18px 18px 4px 18px',
+              padding: 'clamp(12px, 1.5vw, 20px) clamp(14px, 2vw, 24px)',
+              color: 'rgba(255,238,248,0.88)',
+              fontSize: 'clamp(13px, 1.2vw, 16px)',
+              lineHeight: 1.6,
+              fontStyle: 'normal',
+              opacity: 0,
+              transform: 'translateX(30px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+            }}>
+              <strong style={{ color: '#FF9ED8' }}>Так!</strong>{' '}
+              Навіть якщо все життя ти ставила себе на останнє місце — все можна змінити. Любити себе, цінувати та обирати — це навичка, яка формується через повторюваний досвід. Ми створимо цей «новий» досвід разом.
+            </div>
+            <img src="/images/blobs/blob-5.png" className="bubble-blob5-msg2" loading="lazy" style={{
+              position: 'absolute',
+              top: '-110px',
+              right: '-40px',
+              width: 160,
+              height: 'auto',
+              opacity: 0.85,
+              pointerEvents: 'none',
+              zIndex: 2,
+              animation: 'blobB 19s ease-in-out infinite',
+            }} />
+          </div>
+        </div>
+
+        {/* Рядок 2 */}
+        <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: 16 }}>
+          {/* Ліва бульбашка */}
+          <div className="bubble-wrap-left" style={{ position: 'relative', width: '48%' }}>
+            <div className="chat-bubble" data-delay="600" style={{
+              background: 'linear-gradient(135deg, #6b2d4a 0%, #3a2030 100%)',
+              border: '1px solid rgba(255,102,196,0.3)',
+              borderRadius: '18px 18px 18px 4px',
+              padding: 'clamp(12px, 1.5vw, 20px) clamp(14px, 2vw, 24px)',
+              color: '#fff',
+              fontSize: 'clamp(13px, 1.2vw, 16px)',
+              lineHeight: 1.6,
+              fontStyle: 'normal',
+              opacity: 0,
+              transform: 'translateX(-30px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+            }}>
+              Я хочу новий досвід, але мені страшно…
+            </div>
+            <img src="/images/blobs/blob-3.png" className="bubble-blob3" loading="lazy" style={{
+              position: 'absolute',
+              bottom: '-210px',
+              left: '30px',
+              width: 270,
+              height: 'auto',
+              opacity: 0.8,
+              pointerEvents: 'none',
+              zIndex: 2,
+              animation: 'blobC 14s ease-in-out infinite',
+            }} />
+            <img src="/images/blobs/blob-1.png" className="bubble-blob1" loading="lazy" style={{
+              position: 'absolute',
+              bottom: '-190px',
+              right: '-180px',
+              width: 340,
+              height: 'auto',
+              opacity: 0.6,
+              pointerEvents: 'none',
+              zIndex: 2,
+              animation: 'blobA 17s ease-in-out infinite',
+            }} />
+          </div>
+        </div>
+
+        {/* Права бульбашка відповідь 2 */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16 }}>
+          <div className="bubble-wrap-right" style={{ position: 'relative', width: '48%' }}>
+            <div className="chat-bubble" data-delay="900" style={{
+              background: 'linear-gradient(135deg, #6b2d4a 0%, #3a2030 100%)',
+              border: '1px solid rgba(255,102,196,0.3)',
+              borderRadius: '18px 18px 4px 18px',
+              padding: 'clamp(12px, 1.5vw, 20px) clamp(14px, 2vw, 24px)',
+              color: 'rgba(255,238,248,0.88)',
+              fontSize: 'clamp(13px, 1.2vw, 16px)',
+              lineHeight: 1.6,
+              fontStyle: 'normal',
+              opacity: 0,
+              transform: 'translateX(30px)',
+              transition: 'opacity 0.6s ease, transform 0.6s ease',
+            }}>
+              Забудь, як ти жила до цього! Попереду — новий досвід і любов до себе у кожному виборі.
+            </div>
+          </div>
         </div>
 
         {/* CTA */}
-        <div style={{ position: 'relative', zIndex: 3, textAlign: 'center', marginTop: 36 }}>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <a href="#price" style={{
             textDecoration: 'none',
             display: 'inline-flex',
             alignItems: 'center',
             gap: 10,
+            marginTop: 32,
             background: '#28201E',
             color: '#fff',
             border: '1px solid rgba(255,102,196,0.5)',
             fontSize: 'clamp(14px, 1.2vw, 16px)',
-            fontWeight: 700,
+            fontWeight: 400,
             padding: 'clamp(14px, 1.5vw, 16px) clamp(28px, 3vw, 36px)',
             borderRadius: 100,
             animation: 'pulseGlow 3s ease-in-out infinite',
-            fontWeight: 400,
           }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF9ED8" strokeWidth="1.6" strokeLinecap="round">
               <path d="M4.8 9.4A8 8 0 0 1 12 5a8 8 0 0 1 5.5 2.2"/>
