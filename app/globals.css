@@ -88,3 +88,90 @@ body {
     font-size: 13px;
   }
 }
+
+/* Логотип - легке збільшення при hover */
+.hero-logo {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.hero-logo:hover {
+  transform: scale(1.05);
+  opacity: 0.85;
+}
+
+/* Посилання на логотип в футері */
+.footer-logo {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  display: inline-block;
+}
+.footer-logo:hover {
+  transform: scale(1.05);
+  opacity: 0.85;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Transitions для інтерактивних елементів */
+a, button {
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover scale для кнопок і посилань */
+a:hover, button:hover {
+  transform: scale(1.03);
+}
+
+/* Active стан - притискання */
+a:active, button:active {
+  transform: scale(0.97);
+}
+
+/* Focus стилі для доступності */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #FF66C4;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Cursor pointer на всіх клікабельних */
+a, button, [onClick], [role="button"] {
+  cursor: pointer;
+}
+
+/* Прибрати outline на touch */
+@media (hover: none) {
+  a:focus, button:focus {
+    outline: none;
+  }
+}
+
+.hero-nav-link {
+  position: relative;
+}
+.hero-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #FF66C4;
+  transition: width 0.3s ease;
+}
+.hero-nav-link:hover::after {
+  width: 100%;
+}
+
+/* Обгортка для кнопок з власною animation на transform (vibrate) - hover-збільшення без конфлікту */
+.cta-scale-wrap {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.cta-scale-wrap:hover {
+  transform: scale(1.03);
+}
+.cta-scale-wrap:active {
+  transform: scale(0.97);
+}
