@@ -1,21 +1,12 @@
 'use client';
 
+import MoonBullet from '@/components/ui/MoonBullet';
+
 const credentials = [
   'Сертифікований коуч за стандартами ECF',
-  'Амбасадорка трансформаційного мислення',
+  'Авторка методики трансформаційного мислення',
   'Блогерка',
 ];
-
-const MoonBullet = () => (
-  <div style={{
-    flexShrink: 0,
-    marginTop: 4,
-    width: 14,
-    height: 14,
-    borderRadius: '50%',
-    boxShadow: 'inset 4px -2px 0 0 #FF66C4',
-  }} />
-);
 
 export default function AboutSection() {
   return (
@@ -47,6 +38,7 @@ export default function AboutSection() {
             <img
               src="/images/kateryna.jpg"
               alt="Катерина Кармазіна"
+              loading="lazy"
               style={{
                 width: '100%',
                 height: '100%',
@@ -113,21 +105,21 @@ export default function AboutSection() {
             fontSize: 'clamp(13px, 1.2vw, 16px)',
             lineHeight: 1.68,
             color: 'rgba(247,233,241,0.82)',
-          }}>Мій підхід поєднує практичні коучингові інструменти і психологічні техніки, щоб зміни були глибокими і відчутними щодня. Я створюю безпечний простір для розвитку, де кожна учасниця отримає підтримку, конкретні практики і кроки, які можна одразу застосувати в житті.</p>
+          }}>Мій підхід поєднує практичні коучингові інструменти і психологічні техніки, щоб зміни були глибокими і відчутними. Я створила безпечний простір, де кожна учасниця отримає підтримку, конкретні практики і кроки, які можна одразу застосувати в житті.</p>
 
           <p style={{
             marginTop: 16,
             fontSize: 'clamp(13px, 1.2vw, 16px)',
             lineHeight: 1.68,
             color: 'rgba(247,233,241,0.82)',
-          }}>Цей курс — мої знання, досвід та енергія, вкладені в конкретну <strong style={{ color: '#FF66C4' }}>«космічну» систему</strong>, яка допоможе вам не тільки зрозуміти свою цінність, а й відчути її, інтегрувати у щоденне життя та трансформувати своє мислення.</p>
+          }}>Цей курс — мої знання, досвід та енергія, вкладені в конкретну <strong style={{ color: '#FF66C4' }}>«космічну» систему</strong>, яка допоможе тобі не тільки усвідомити свою цінність, а й відчути її сповна, трансформувавши своє мислення.</p>
 
           <p style={{
             marginTop: 16,
             fontSize: 'clamp(13px, 1.2vw, 16px)',
             lineHeight: 1.68,
             color: '#fff',
-          }}><strong style={{ color: '#FF66C4' }}>Зміни гарантую, бо пройшла це все сама і випробувала на собі!</strong></p>
+          }}><span style={{ color: '#FF66C4' }}>Зміни гарантую, бо <strong>пройшла це все сама</strong> і випробувала на собі!</span></p>
         </div>
       </div>
 
@@ -144,6 +136,7 @@ export default function AboutSection() {
             grid-row: auto !important;
             order: 1 !important;
             padding-bottom: 0 !important;
+            text-align: center !important;
           }
           .about-photo-col {
             grid-column: 1 !important;
