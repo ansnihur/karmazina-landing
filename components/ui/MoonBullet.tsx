@@ -1,13 +1,13 @@
-export default function MoonBullet() {
+export default function MoonBullet({ size = 14 }: { size?: number }) {
   return (
     <div style={{
       flexShrink: 0,
-      width: 14,
-      height: 14,
+      width: size,
+      height: size,
       borderRadius: '50%',
       background: 'transparent',
-      boxShadow: 'inset 5px -2px 0 0 #FF66C4',
-      marginTop: 3,
+      boxShadow: `inset ${Math.round(size * 0.35)}px -2px 0 0 #FF66C4`,
+      marginTop: size === 14 ? 3 : 0,
     }} />
   );
 }
