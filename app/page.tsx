@@ -6,6 +6,8 @@ import ResultsSection from '@/components/sections/ResultsSection';
 import ProgramSection from '@/components/sections/ProgramSection';
 import PricingSection from '@/components/sections/PricingSection';
 import AboutSection from '@/components/sections/AboutSection';
+import ReviewsSection from '@/components/sections/ReviewsSection';
+import CtaFooterSection from '@/components/sections/CtaFooterSection';
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
       <ProgramSection />
       <PricingSection />
       <AboutSection />
+      <ReviewsSection />
+      <CtaFooterSection />
     </main>
   );
 }
