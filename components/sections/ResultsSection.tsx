@@ -34,18 +34,23 @@ export default function ResultsSection() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          const delay = el.dataset.delay || '0';
           if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            const delay = el.dataset.delay || '0';
             setTimeout(() => {
               el.style.opacity = '1';
               el.style.transform = 'translateX(0)';
             }, parseInt(delay));
-            observer.unobserve(el);
+          } else {
+            el.style.opacity = '0';
+            const originalTransform = el.classList.contains('bubble-left')
+              ? 'translateX(-30px)'
+              : 'translateX(30px)';
+            el.style.transform = originalTransform;
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     bubbles.forEach((bubble) => observer.observe(bubble));
@@ -196,6 +201,8 @@ export default function ResultsSection() {
             margin-bottom: 6px !important;
           }
           .result-card span {
+            display: block !important;
+            margin-top: 6px !important;
             font-size: 12px !important;
             line-height: 1.4 !important;
           }
@@ -267,7 +274,7 @@ export default function ResultsSection() {
         <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: 16 }}>
           {/* Ліва бульбашка */}
           <div className="bubble-wrap-left" style={{ position: 'relative', width: '48%' }}>
-            <div className="chat-bubble" data-delay="0" style={{
+            <div className="chat-bubble bubble-left" data-delay="0" style={{
               background: 'linear-gradient(135deg, #6b2d4a 0%, #3a2030 100%)',
               border: '1px solid rgba(255,102,196,0.3)',
               borderRadius: '18px 18px 18px 4px',
@@ -305,7 +312,7 @@ export default function ResultsSection() {
         {/* Права бульбашка відповідь */}
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16 }}>
           <div className="bubble-wrap-right" style={{ position: 'relative', width: '48%', zIndex: 3 }}>
-            <div className="chat-bubble" data-delay="300" style={{
+            <div className="chat-bubble bubble-right" data-delay="300" style={{
               background: 'linear-gradient(135deg, #6b2d4a 0%, #3a2030 100%)',
               border: '1px solid rgba(255,102,196,0.3)',
               borderRadius: '18px 18px 4px 18px',
@@ -339,7 +346,7 @@ export default function ResultsSection() {
         <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: 16 }}>
           {/* Ліва бульбашка */}
           <div className="bubble-wrap-left" style={{ position: 'relative', width: '48%' }}>
-            <div className="chat-bubble" data-delay="600" style={{
+            <div className="chat-bubble bubble-left" data-delay="600" style={{
               background: 'linear-gradient(135deg, #6b2d4a 0%, #3a2030 100%)',
               border: '1px solid rgba(255,102,196,0.3)',
               borderRadius: '18px 18px 18px 4px',
@@ -382,7 +389,7 @@ export default function ResultsSection() {
         {/* Права бульбашка відповідь 2 */}
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16 }}>
           <div className="bubble-wrap-right" style={{ position: 'relative', width: '48%' }}>
-            <div className="chat-bubble" data-delay="900" style={{
+            <div className="chat-bubble bubble-right" data-delay="900" style={{
               background: 'linear-gradient(135deg, #6b2d4a 0%, #3a2030 100%)',
               border: '1px solid rgba(255,102,196,0.3)',
               borderRadius: '18px 18px 4px 18px',

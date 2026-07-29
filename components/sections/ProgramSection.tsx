@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import MoonBullet from '@/components/ui/MoonBullet';
 import SectionContainer from '@/components/ui/SectionContainer';
 
@@ -57,38 +57,6 @@ export default function ProgramSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const isTouchDevice = 'ontouchstart' in window ||
-      navigator.maxTouchPoints > 0 ||
-      window.matchMedia('(hover: none)').matches;
-    if (!isTouchDevice) return;
-
-    const observers = itemRefs.current.map((ref, i) => {
-      if (!ref) return null;
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              setOpenIndex(i);
-            }
-          });
-        },
-        {
-          threshold: 0.3,
-          rootMargin: '-20% 0px -40% 0px'
-        }
-      );
-      observer.observe(ref);
-      return observer;
-    });
-
-    return () => {
-      observers.forEach(obs => obs?.disconnect());
-    };
-  }, []);
-
   return (
     <section id="program" style={{ position: 'relative', zIndex: 2, background: '#28201E' }}>
       <SectionContainer>
@@ -118,7 +86,6 @@ export default function ProgramSection() {
           {lectures.map((lec, i) => (
             <div
               key={i}
-              ref={(el) => { itemRefs.current[i] = el; }}
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
               style={{
@@ -151,7 +118,12 @@ export default function ProgramSection() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    setOpenIndex(openIndex === i ? null : i);
+                    if (openIndex === i || hoveredIndex === i) {
+                      setOpenIndex(null);
+                      setHoveredIndex(null);
+                    } else {
+                      setOpenIndex(i);
+                    }
                   }}
                   style={{
                     background: 'none',

@@ -89,6 +89,12 @@ body {
   }
 }
 
+@media (max-width: 767px) {
+  p, span, li {
+    font-size: calc(1em + 1px);
+  }
+}
+
 /* Логотип - легке збільшення при hover */
 .hero-logo {
   transition: transform 0.2s ease, opacity 0.2s ease;

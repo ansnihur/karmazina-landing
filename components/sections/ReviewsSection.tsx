@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const reviews = Array.from({ length: 30 }, (_, i) => ({
   id: `review-${i + 1}`,
@@ -9,6 +9,7 @@ const reviews = Array.from({ length: 30 }, (_, i) => ({
 
 export default function ReviewsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const [selectedReview, setSelectedReview] = useState<string | null>(null);
 
   const scrollLeft = () => {
     trackRef.current?.scrollBy({ left: -320, behavior: 'smooth' });
@@ -147,6 +148,7 @@ export default function ReviewsSection() {
               {reviews.map((r) => (
                 <div
                   key={r.id}
+                  onClick={() => setSelectedReview(r.src)}
                   style={{
                     flexShrink: 0,
                     width: 'clamp(220px, 22vw, 300px)',
@@ -162,6 +164,7 @@ export default function ReviewsSection() {
                     justifyContent: 'center',
                     padding: 8,
                     scrollSnapAlign: 'start',
+                    cursor: 'pointer',
                   }}
                 >
                   <img
@@ -210,6 +213,56 @@ export default function ReviewsSection() {
           }
         }
       `}</style>
+
+      {selectedReview && (
+        <div
+          onClick={() => setSelectedReview(null)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 1000,
+            background: 'rgba(0,0,0,0.85)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 20,
+            cursor: 'zoom-out',
+          }}
+        >
+          <button
+            onClick={() => setSelectedReview(null)}
+            style={{
+              position: 'absolute',
+              top: 20,
+              right: 20,
+              background: 'rgba(255,255,255,0.15)',
+              border: 'none',
+              borderRadius: '50%',
+              width: 44,
+              height: 44,
+              color: '#fff',
+              fontSize: 22,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >✕</button>
+          <img
+            src={selectedReview}
+            alt="Відгук"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              objectFit: 'contain',
+              borderRadius: 16,
+              boxShadow: '0 24px 80px rgba(0,0,0,0.5)',
+              cursor: 'default',
+            }}
+          />
+        </div>
+      )}
     </section>
   );
 }
