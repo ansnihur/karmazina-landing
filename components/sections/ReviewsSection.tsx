@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 const reviews = Array.from({ length: 30 }, (_, i) => ({
   id: `review-${i + 1}`,
@@ -10,6 +11,11 @@ const reviews = Array.from({ length: 30 }, (_, i) => ({
 export default function ReviewsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [selectedReview, setSelectedReview] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const scrollLeft = () => {
     trackRef.current?.scrollBy({ left: -320, behavior: 'smooth' });
@@ -214,13 +220,13 @@ export default function ReviewsSection() {
         }
       `}</style>
 
-      {selectedReview && (
+      {mounted && selectedReview && createPortal(
         <div
           onClick={() => setSelectedReview(null)}
           style={{
             position: 'fixed',
             inset: 0,
-            zIndex: 1000,
+            zIndex: 9999,
             background: 'rgba(0,0,0,0.85)',
             display: 'flex',
             alignItems: 'center',
@@ -261,7 +267,8 @@ export default function ReviewsSection() {
               cursor: 'default',
             }}
           />
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );
