@@ -39,15 +39,6 @@ export default function ReviewsSection() {
 
         {/* Заголовок */}
         <div style={{ textAlign: 'center', marginBottom: 'clamp(32px, 4vw, 50px)' }}>
-          <span style={{
-            display: 'inline-block',
-            fontSize: 'clamp(11px, 1vw, 13px)',
-            letterSpacing: '0.22em',
-            textTransform: 'uppercase',
-            color: '#FF66C4',
-            fontWeight: 700,
-            marginBottom: 18,
-          }}>їхні історії</span>
           <h2 style={{
             fontFamily: 'var(--font-nyght)',
             fontWeight: 400,
