@@ -105,7 +105,7 @@ export default function CtaFooterSection() {
             <a
               href="https://www.instagram.com/cosmic_coach"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               style={{ color: '#FF9ED8', textDecoration: 'none', borderBottom: '1px solid rgba(255,158,216,0.4)' }}
             >Інстаграм</a>
           </p>
@@ -119,7 +119,7 @@ export default function CtaFooterSection() {
             gap: 18,
           }}>
             {/* Instagram */}
-            <a href="https://www.instagram.com/cosmic_coach" target="_blank" rel="noopener" aria-label="Instagram" style={{
+            <a href="https://www.instagram.com/cosmic_coach" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{
               textDecoration: 'none',
               width: 52, height: 52,
               borderRadius: '50%',
@@ -136,7 +136,7 @@ export default function CtaFooterSection() {
             </a>
 
             {/* TikTok */}
-            <a href="https://www.tiktok.com/@cosmic_coach" target="_blank" rel="noopener" aria-label="TikTok" style={{
+            <a href="https://www.tiktok.com/@cosmic_coach" target="_blank" rel="noopener noreferrer" aria-label="TikTok" style={{
               textDecoration: 'none',
               width: 52, height: 52,
               borderRadius: '50%',
@@ -145,13 +145,13 @@ export default function CtaFooterSection() {
               boxShadow: '0 8px 22px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF9ED8">
-                <path d="M16.5 3c.4 2.1 1.7 3.6 3.8 3.9v3c-1.4.1-2.7-.3-3.9-1v6.4c0 3.4-2.6 5.7-5.8 5.7-3 0-5.3-2.2-5.3-5.1 0-3 2.4-5.2 5.6-4.9v3.1c-.4-.1-.9-.2-1.3-.1-1.1.2-1.9 1-1.8 2.2.1 1.1 1 1.9 2.1 1.9 1.3 0 2.2-1 2.2-2.5V3h2.6z"/>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF9ED8" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.22 8.22 0 0 0 4.8 1.54V6.78a4.85 4.85 0 0 1-1.03-.09z"/>
               </svg>
             </a>
 
             {/* Telegram */}
-            <a href="https://t.me/kkarmazina" target="_blank" rel="noopener" aria-label="Telegram" style={{
+            <a href="https://t.me/kkarmazina" target="_blank" rel="noopener noreferrer" aria-label="Telegram" style={{
               textDecoration: 'none',
               width: 52, height: 52,
               borderRadius: '50%',
@@ -163,6 +163,23 @@ export default function CtaFooterSection() {
               <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF9ED8">
                 <path d="M21.9 4.3 18.6 20c-.2 1-.9 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.2.2-.5.5-.9.5l.3-4.6 8.3-7.5c.4-.3-.1-.5-.6-.2L7.3 12.9 2.8 11.5c-1-.3-1-1 .2-1.5L20.6 3c.8-.3 1.5.2 1.3 1.3z"/>
               </svg>
+            </a>
+
+            {/* Threads */}
+            <a href="https://www.threads.com/@cosmic_coach?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" aria-label="Threads" style={{
+              textDecoration: 'none',
+              width: 52, height: 52,
+              borderRadius: '50%',
+              background: '#1c161b',
+              border: '1px solid rgba(255,102,196,0.4)',
+              boxShadow: '0 8px 22px rgba(0,0,0,0.4)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <img
+                src="/images/threads-icon.svg"
+                alt="Threads"
+                style={{ width: 20, height: 20 }}
+              />
             </a>
           </div>
 
@@ -194,9 +211,9 @@ export default function CtaFooterSection() {
             gap: '10px 26px',
             flexWrap: 'wrap',
           }}>
-            <a href="/privacy" style={{ textDecoration: 'none', fontSize: 'clamp(12px, 1vw, 13.5px)', color: 'rgba(247,233,241,0.55)' }}>Політика конфіденційності</a>
+            <a href="https://docs.google.com/document/d/1un3uaiiCvGYmb3OEqLc3dmKj_8ERpwJy2iMbHNaBg-E/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', fontSize: 'clamp(12px, 1vw, 13.5px)', color: 'rgba(247,233,241,0.55)' }}>Політика конфіденційності</a>
             <span style={{ color: 'rgba(247,233,241,0.2)' }}>·</span>
-            <a href="/oferta" style={{ textDecoration: 'none', fontSize: 'clamp(12px, 1vw, 13.5px)', color: 'rgba(247,233,241,0.55)' }}>Публічна оферта</a>
+            <a href="https://docs.google.com/document/d/1cAuZqxa4gUNmL3pbtOTcG0rEyCqVvg_5qseD3OIc708/edit?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', fontSize: 'clamp(12px, 1vw, 13.5px)', color: 'rgba(247,233,241,0.55)' }}>Публічна оферта</a>
           </div>
         </div>
       </div>

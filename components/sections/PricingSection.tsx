@@ -126,7 +126,7 @@ export default function PricingSection() {
             <div className="pricing-price" style={{ marginTop: 'auto', paddingTop: 34, textAlign: 'center' }}>
               <div style={{ fontSize: 20, color: '#9a9298', textDecoration: 'line-through', lineHeight: 1 }}>999 грн</div>
               <div style={{ fontFamily: 'var(--font-nyght)', fontSize: 'clamp(44px, 5vw, 62px)', color: '#28201E', lineHeight: 1.05, marginTop: 4 }}>699 грн</div>
-              <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 22, background: '#28201E', color: '#fff', border: '1px solid #28201E', fontSize: 'clamp(14px, 1.2vw, 16px)', fontWeight: 400, padding: '16px', borderRadius: 100, boxShadow: '0 14px 34px rgba(40,32,30,0.25)', animation: 'pulseGlow 2s ease-in-out infinite' }}>
+              <a href="http://secure.wayforpay.com/payment/s06ca75389fcd" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 22, background: '#28201E', color: '#fff', border: '1px solid #28201E', fontSize: 'clamp(14px, 1.2vw, 16px)', fontWeight: 400, padding: '16px', borderRadius: 100, boxShadow: '0 14px 34px rgba(40,32,30,0.25)', animation: 'pulseGlow 2s ease-in-out infinite' }}>
                 <FingerprintIcon />
                 Обрати базовий
               </a>
@@ -181,7 +181,7 @@ export default function PricingSection() {
               <div className="pricing-price" style={{ marginTop: 'auto', paddingTop: 34, textAlign: 'center' }}>
                 <div style={{ fontSize: 20, color: 'rgba(247,233,241,0.45)', textDecoration: 'line-through', lineHeight: 1 }}>1699 грн</div>
                 <div style={{ fontFamily: 'var(--font-nyght)', fontSize: 'clamp(44px, 5vw, 62px)', color: '#fff', lineHeight: 1.05, marginTop: 4 }}>1299 грн</div>
-                <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 22, background: '#FF66C4', color: '#fff', border: '1px solid rgba(255,102,196,0.5)', fontSize: 'clamp(14px, 1.2vw, 16px)', fontWeight: 400, padding: '16px', borderRadius: 100, boxShadow: '0 14px 36px rgba(255,102,196,0.5)', animation: 'pulseGlow 2s ease-in-out infinite' }}>
+                <a href="http://secure.wayforpay.com/payment/s06ca75389fcd" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 22, background: '#FF66C4', color: '#fff', border: '1px solid rgba(255,102,196,0.5)', fontSize: 'clamp(14px, 1.2vw, 16px)', fontWeight: 400, padding: '16px', borderRadius: 100, boxShadow: '0 14px 36px rgba(255,102,196,0.5)', animation: 'pulseGlow 2s ease-in-out infinite' }}>
                   <FingerprintIcon stroke="#fff" />
                   Обрати космічний+
                 </a>
